@@ -10,7 +10,7 @@
     ></div>
 
     <!-- ローディングブロックとテキスト -->
-    <div class="text-center relative z-10">
+    <div v-if="isLoading" class="text-center relative z-10">
       <div class="loading-blocks mb-4">
         <div class="block"></div>
         <div class="block"></div>
@@ -73,7 +73,8 @@ export default {
 .block {
   width: 32px;
   height: 32px;
-  background: #43b581;
+  background-image: url('/grass.svg'); /* 土ブロックの画像を背景に設定 */
+  background-size: cover; /* 画像を要素全体にフィット */
   animation: block-fall 1s infinite ease-in-out;
 }
 
