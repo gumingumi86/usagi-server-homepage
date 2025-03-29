@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <LoadingScreen v-if="isLoading" />
-    <router-view v-else />
+    <LoadingScreen :isLoading="isLoading" />
+    <router-view v-if="!isLoading" />
   </div>
 </template>
 
