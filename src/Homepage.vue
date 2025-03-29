@@ -2,7 +2,7 @@
   <nav class="bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 text-white p-4 flex justify-between">
     <div class="text-xl font-bold px-2 bg-gray-900">Usagi Server</div>
     <div class="flex space-x-4">
-      <router-link to="/" class="px-2 hover:bg-yellow-500 transition duration-300">Dashboard</router-link>
+      <router-link to="/dashboard" class="px-2 hover:bg-yellow-500 transition duration-300">Dashboard</router-link>
       <router-link to="/about" class="px-2 hover:bg-yellow-500 transition duration-300">About</router-link>
       <router-link to="/contact" class="px-2 hover:bg-yellow-500 transition duration-300">Contact</router-link>
     </div>
