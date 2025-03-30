@@ -8,11 +8,12 @@
     </div>
   </nav>
 
-  <h1
-    class="text-4xl font-bold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">
-    Welcome to the Usagi Server
-  </h1>
-  <p class="text-lg text-center text-gray-900">You can access various in-game content from your browser.</p>
+  <div class="video-container">
+    <video autoplay loop muted playsinline>
+      <source src="/distantHorizon.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <div class="flex flex-col gap-12 mt-8">
     <div v-for="(section, index) in sections" :key="index" class="flex flex-col md:flex-row items-center gap-6 p-6"
@@ -31,6 +32,22 @@
 body {
   background: #1a1a1a;
   font-family: 'Minecraft', monospace;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 動画をコンテナにフィット */
 }
 </style>
 
