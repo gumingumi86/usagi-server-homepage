@@ -6,7 +6,7 @@
   >
     <!-- 背景色の伸びるアニメーション -->
     <div
-      class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-700"
+      class="absolute inset-0 bg-gray-900"
       :class="{ 'animate-slide-out': !isLoading }"
     ></div>
 

@@ -2,17 +2,17 @@
   <div class="container mx-auto p-6 max-w-4xl text-gray-100">
     <!-- タイトルセクション -->
     <header class="mb-12 text-center">
-      <h1 class="text-5xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 text-transparent bg-clip-text">
+      <h1 class="text-5xl font-extrabold bg-gradient-to-r from-blue-800 to-cyan-500 text-transparent bg-clip-text">
         Welcome to Our Minecraft Server
       </h1>
-      <p class="text-lg text-gray-400 mt-4">
+      <p class="text-lg font-bold text-gray-900 mt-4">
         Step into a breathtaking world where nature’s beauty meets the limitless creativity of Minecraft.
       </p>
     </header>
 
     <!-- セクション: Explore Breathtaking Landscapes -->
-    <section class="mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-3xl font-bold text-indigo-400 mb-4">
+    <section class="mb-12 bg-blue-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+      <h2 class="text-3xl font-bold text-cyan-400 mb-4">
         Explore Breathtaking Landscapes
       </h2>
       <p class="text-gray-300 leading-relaxed">
@@ -21,25 +21,25 @@
     </section>
 
     <!-- セクション: Enhanced Gameplay with Mods -->
-    <section class="mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-3xl font-bold text-green-400 mb-4">
+    <section class="mb-12 bg-blue-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+      <h2 class="text-3xl font-bold text-cyan-400 mb-4">
         Enhanced Gameplay with Mods
       </h2>
       <ul class="space-y-4">
         <li class="flex items-start space-x-4">
-          <span class="text-indigo-500 text-2xl">✔</span>
+          <span class="text-cyan-400 text-2xl">✔</span>
           <p class="text-gray-300">
             <strong>Immersive Graphics Mods:</strong> Enjoy stunning shaders and enhanced textures that bring the world to life with realistic lighting, reflections, and atmospheric effects.
           </p>
         </li>
         <li class="flex items-start space-x-4">
-          <span class="text-indigo-500 text-2xl">✔</span>
+          <span class="text-cyan-400 text-2xl">✔</span>
           <p class="text-gray-300">
             <strong>Advanced Building Tools:</strong> Take advantage of mods that expand your building possibilities with intricate details, customizable blocks, and powerful construction utilities.
           </p>
         </li>
         <li class="flex items-start space-x-4">
-          <span class="text-indigo-500 text-2xl">✔</span>
+          <span class="text-cyan-400 text-2xl">✔</span>
           <p class="text-gray-300">
             <strong>Unique Gameplay Mechanics:</strong> Experience custom mobs, expanded crafting options, and new challenges that add depth to your adventure.
           </p>
@@ -48,8 +48,8 @@
     </section>
 
     <!-- セクション: A Community for Creators and Explorers -->
-    <section class="mb-12 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-3xl font-bold text-yellow-400 mb-4">
+    <section class="mb-12 bg-blue-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+      <h2 class="text-3xl font-bold text-cyan-400 mb-4">
         A Community for Creators and Explorers
       </h2>
       <p class="text-gray-300 leading-relaxed">
@@ -59,7 +59,7 @@
 
     <!-- フッター -->
     <footer class="text-center mt-12">
-      <router-link to="/" class="text-indigo-500 hover:underline">
+      <router-link to="/" class="text-cyan-400 hover:underline">
         Back to Home
       </router-link>
     </footer>
@@ -71,26 +71,33 @@ export default {};
 </script>
 
 <style scoped>
-/* Google Fonts のインポート */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
 .container {
-  font-family: 'Poppins', sans-serif; /* モダンなフォントを適用 */
-  background: linear-gradient(to bottom, #1a1a1a, #121212); /* 背景にグラデーション */
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-  font-family: 'Poppins', sans-serif;
+h1, h2, footer {
+  font-family: 'Minecraft Regular', 'Poppins', sans-serif;
 }
 
 section {
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* アニメーションを追加 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 section:hover {
-  transform: translateY(-5px); /* ホバー時に少し浮き上がる */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* ホバー時の影を強調 */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #00ffff; /* ホバー時に明るいシアン色 */
 }
 </style>

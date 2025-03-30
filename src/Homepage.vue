@@ -3,11 +3,11 @@
     <nav
       :class="['fixed w-full text-white p-4 flex justify-between transition-transform duration-300', { '-translate-y-full': !showNav }]"
       style="background: rgba(0, 0, 0, 0.5); z-index: 10;">
-      <div class="text-xl font-bold px-2 bg-cyan-800 flex items-center">Usagi Server</div>
+      <div class="text-xl font-bold px-2 bg-gray-900 flex items-center">Usagi Server</div>
       <div class="flex space-x-4 items-center">
-        <router-link to="/about" class="px-2 hover:bg-cyan-800 transition duration-300">About</router-link>
-        <router-link to="/map" class="px-2 hover:bg-cyan-800 transition duration-300">Map</router-link>
-        <router-link to="/dashboard" class="px-2 hover:bg-cyan-800 transition duration-300">Dashboard</router-link>
+        <router-link to="/about" class="px-2 hover:bg-gray-900 transition duration-300">About</router-link>
+        <router-link to="/map" class="px-2 hover:bg-gray-900 transition duration-300">Map</router-link>
+        <router-link to="/dashboard" class="px-2 hover:bg-gray-900 transition duration-300">Dashboard</router-link>
         <button
           class="ml-4 px-4 py-2 bg-blue-500 text-white rounded border-2 border-transparent hover:border-white transition duration-300">
           Download
@@ -34,7 +34,7 @@
 <style>
 body {
   background: #1a1a1a;
-  font-family: 'Minecraft', monospace;
+  font-family: 'Minecraft Regular', monospace;
 }
 
 .video-container {
