@@ -3,12 +3,13 @@
     <nav
       :class="['fixed w-full text-white p-4 flex justify-between transition-transform duration-300', { '-translate-y-full': !showNav }]"
       style="background: rgba(0, 0, 0, 0.5); z-index: 10;">
-      <div class="text-xl font-bold px-2 bg-gray-900 flex items-center">Usagi Server</div>
+      <div class="text-xl font-bold px-2 bg-cyan-800 flex items-center">Usagi Server</div>
       <div class="flex space-x-4 items-center">
-        <router-link to="/dashboard" class="px-2 hover:bg-yellow-500 transition duration-300">Dashboard</router-link>
-        <router-link to="/about" class="px-2 hover:bg-yellow-500 transition duration-300">About</router-link>
-        <router-link to="/contact" class="px-2 hover:bg-yellow-500 transition duration-300">Contact</router-link>
-        <button class="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+        <router-link to="/about" class="px-2 hover:bg-cyan-800 transition duration-300">About</router-link>
+        <router-link to="/map" class="px-2 hover:bg-cyan-800 transition duration-300">Map</router-link>
+        <router-link to="/dashboard" class="px-2 hover:bg-cyan-800 transition duration-300">Dashboard</router-link>
+        <button
+          class="ml-4 px-4 py-2 bg-blue-500 text-white rounded border-2 border-transparent hover:border-white transition duration-300">
           Download
         </button>
       </div>
@@ -65,10 +66,13 @@ video {
 /* ギャラリーセクション */
 .gallery-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2列固定 */
-  gap: 10px; /* 画像間のスペース */
+  grid-template-columns: repeat(2, 1fr);
+  /* 2列固定 */
+  gap: 10px;
+  /* 画像間のスペース */
   padding: 20px;
-  background: #1a1a1a; /* 背景色を動画と統一 */
+  background: #1a1a1a;
+  /* 背景色を動画と統一 */
 }
 
 .gallery-item {
@@ -79,12 +83,15 @@ video {
 .gallery-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* アスペクト比を維持しつつ画像をフィット */
-  transition: transform 0.3s ease; /* ホバー時のアニメーション */
+  object-fit: cover;
+  /* アスペクト比を維持しつつ画像をフィット */
+  transition: transform 0.3s ease;
+  /* ホバー時のアニメーション */
 }
 
 .gallery-item:hover .gallery-image {
-  transform: scale(1.1); /* ホバー時に画像を拡大 */
+  transform: scale(1.1);
+  /* ホバー時に画像を拡大 */
 }
 </style>
 
