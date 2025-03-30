@@ -20,14 +20,6 @@
       <p class="text-green-500 text-xl loading-text">Loading...</p>
     </div>
   </div>
-  <!-- ページトップに戻るボタン -->
-  <button
-    v-if="showScrollTopButton"
-    @click="scrollToTop"
-    class="fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition"
-  >
-    ↑ Top
-  </button>
 </div>
 </template>
 
@@ -43,7 +35,6 @@ export default {
   data() {
     return {
       isVisible: true, // ローディング画面の表示状態
-      showScrollTopButton: false // ページトップボタンの表示状態
     };
   },
   watch: {
@@ -54,24 +45,6 @@ export default {
           this.isVisible = false;
         }, 1000); // 背景アニメーションの時間と一致
       }
-    }
-  },
-  mounted() {
-    // スクロールイベントを監視
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  beforeUnmount() {
-    // イベントリスナーを削除
-    window.removeEventListener('scroll', this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      // 一定量スクロールしたらボタンを表示
-      this.showScrollTopButton = window.scrollY > 800;
-    },
-    scrollToTop() {
-      // ページトップにスムーズにスクロール
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 };

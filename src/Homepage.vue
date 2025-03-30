@@ -1,29 +1,32 @@
 <template>
-  <nav class="bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 text-white p-4 flex justify-between">
-    <div class="text-xl font-bold px-2 bg-gray-900">Usagi Server</div>
-    <div class="flex space-x-4">
-      <router-link to="/dashboard" class="px-2 hover:bg-yellow-500 transition duration-300">Dashboard</router-link>
-      <router-link to="/about" class="px-2 hover:bg-yellow-500 transition duration-300">About</router-link>
-      <router-link to="/contact" class="px-2 hover:bg-yellow-500 transition duration-300">Contact</router-link>
-    </div>
-  </nav>
-
-  <div class="video-container">
-    <video autoplay loop muted playsinline>
-      <source src="/distantHorizon.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <div class="flex flex-col gap-12 mt-8">
-    <div v-for="(section, index) in sections" :key="index" class="flex flex-col md:flex-row items-center gap-6 p-6"
-      :class="index % 2 === 0 ? 'bg-gradient-to-r from-orange-500 to-red-500 md:flex-row-reverse' : 'bg-gradient-to-r from-lime-500 to-emerald-500 md:flex-row'">
-      <img :src="section.image" :alt="section.title"
-        class="w-full md:w-1/2 border-4 border-gray-900 transform hover:translate-y-[-4px] transition duration-300">
-      <div class="w-full md:w-1/2 text-center md:text-left p-4 bg-gray-900 text-white">
-        <h2 class="text-2xl font-bold mb-2">{{ section.title }}</h2>
-        <p>{{ section.description }}</p>
+  <div>
+    <nav
+      :class="['fixed w-full text-white p-4 flex justify-between transition-transform duration-300', { '-translate-y-full': !showNav }]"
+      style="background: rgba(0, 0, 0, 0.5);">
+      <div class="text-xl font-bold px-2 bg-gray-900 flex items-center">Usagi Server</div>
+      <div class="flex space-x-4 items-center">
+        <router-link to="/dashboard" class="px-2 hover:bg-yellow-500 transition duration-300">Dashboard</router-link>
+        <router-link to="/about" class="px-2 hover:bg-yellow-500 transition duration-300">About</router-link>
+        <router-link to="/contact" class="px-2 hover:bg-yellow-500 transition duration-300">Contact</router-link>
+        <button class="ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+          Download
+        </button>
       </div>
+    </nav>
+
+    <div class="video-container">
+      <video autoplay loop muted playsinline>
+        <source src="/distantHorizon.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="text-white text-center mt-4">
+      <h1 class="text-4xl font-bold">test</h1>
+      <p class="text-lg">test</p>
+      <p class="text-lg">test</p>
+      <p class="text-lg">test</p>
+      <p class="text-lg">test</p>
     </div>
   </div>
 </template>
@@ -36,18 +39,22 @@ body {
 
 .video-container {
   position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+  top: 0;
+  left: 0;
+  width: 100vw; /* ビューポートの幅に合わせる */
+  height: 100vh; /* ビューポートの高さに合わせる */
+  overflow: hidden; /* 動画がはみ出さないようにする */
+  z-index: -1; /* 動画を背景に配置 */
 }
 
 video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 動画をコンテナにフィット */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 動画を中央に配置 */
+  min-width: 100%; /* 横幅をウィンドウにフィット */
+  min-height: 100%; /* 高さをウィンドウにフィット */
+  object-fit: cover; /* アスペクト比を維持しながらウィンドウ全体を埋める */
 }
 </style>
 
@@ -55,29 +62,22 @@ video {
 export default {
   data() {
     return {
-      sections: [
-        {
-          image: "/testImage.png",
-          title: "広大なワールドを探検",
-          description: "自由に冒険できるワールド。建築、冒険、何でも可能！"
-        },
-        {
-          image: "/testImage.png",
-          title: "多彩なミニゲーム",
-          description: "PvP・パルクール・脱出ゲームなど、さまざまな遊び方が楽しめる！"
-        },
-        {
-          image: "/testImage.png",
-          title: "仲間と一緒にプレイ",
-          description: "友達と協力して、最高のMinecraftライフを楽しもう！"
-        },
-        {
-          image: "/testImage.png",
-          title: "定期的なイベント開催",
-          description: "ユニークなイベントが盛りだくさん！レアアイテムをゲットしよう！"
-        }
-      ]
+      showNav: false,
     };
+  },
+  mounted() {
+    // スクロールイベントを監視
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    // イベントリスナーを削除
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      // 少しでもスクロースしたらナビゲーションを表示
+      this.showNav = window.scrollY > 1;
+    }
   }
 };
 </script>
