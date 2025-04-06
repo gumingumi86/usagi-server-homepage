@@ -6,10 +6,11 @@
       <div class="text-xl font-bold px-2 bg-gray-900 flex items-center">Usagi Server</div>
       <div class="flex space-x-4 items-center">
         <router-link to="/about" class="px-2 hover:bg-gray-900 transition duration-300">About</router-link>
-        <router-link to="/map" class="px-2 hover:bg-gray-900 transition duration-300">Map</router-link>
-        <router-link to="/dashboard" class="px-2 hover:bg-gray-900 transition duration-300">Dashboard</router-link>
+        <a href="https://www.usagi-server.com/dynmap/index.html" class="px-2 hover:bg-gray-900 transition duration-300">Map</a>
+        <router-link to="/shop" class="px-2 hover:bg-gray-900 transition duration-300">Shop</router-link>
         <button
-          class="ml-4 px-4 py-2 bg-blue-500 text-white rounded border-2 border-transparent hover:border-white transition duration-300">
+          class="ml-4 px-4 py-2 bg-blue-500 text-white rounded border-2 border-transparent hover:border-white transition duration-300 cursor-pointer"
+          onclick="location.href='https://www.usagi-server.com/Usagi Launcher-setup-2.2.1.exe'">
           Download
         </button>
       </div>
@@ -33,7 +34,7 @@
 
 <style>
 body {
-  background: #1a1a1a;
+  background: white;
   font-family: 'Minecraft Regular', monospace;
 }
 
@@ -100,22 +101,20 @@ export default {
   data() {
     return {
       showNav: false,
-      // Minecraft画像のパスを配列で管理
-      images: [
-        '/images/sample-image2.jpg',
-        '/images/sample-image.webp',
-        '/images/sample-image2.jpg',
-        '/images/sample-image.webp',
-        '/images/sample-image2.jpg',
-        '/images/sample-image.webp',
-        '/images/sample-image2.jpg',
-        '/images/sample-image.webp',
-      ],
+      images: [],
     };
   },
   mounted() {
     // スクロールイベントを監視
     window.addEventListener('scroll', this.handleScroll);
+    fetch('/makeImageList')
+    .then((response) => response.json())
+    .then((data) => {
+      this.images = data;
+    })
+    .catch((error) => {
+      console.error('Error fetching images:', error);
+    });
   },
   beforeUnmount() {
     // イベントリスナーを削除
