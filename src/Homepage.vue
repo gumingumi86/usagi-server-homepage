@@ -25,8 +25,12 @@
 
     <!-- ギャラリーセクション -->
     <div class="gallery-container">
-      <div v-for="(image, index) in images" :key="index" class="gallery-item">
-        <img :src="image" alt="Minecraft Screenshot" class="gallery-image" />
+      <div
+        v-for="(image, index) in images"
+        :key="index"
+        class="gallery-item"
+      >
+        <img :src="image" alt="Gallery Image" class="gallery-image" />
       </div>
     </div>
   </div>
@@ -67,8 +71,7 @@ video {
 /* ギャラリーセクション */
 .gallery-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* 2列固定 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   /* 画像間のスペース */
   padding: 20px;
@@ -107,7 +110,7 @@ export default {
   mounted() {
     // スクロールイベントを監視
     window.addEventListener('scroll', this.handleScroll);
-    fetch('/makeImageList')
+    fetch('https://bgvfrz4xia.execute-api.ap-northeast-1.amazonaws.com/default/makeImageList')
     .then((response) => response.json())
     .then((data) => {
       this.images = data;
