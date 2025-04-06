@@ -23,10 +23,10 @@ export default {
   methods: {
     async requestOneTimePassword() {
       try {
-        const response = await fetch('/api/request-otp', {
+        const response = await fetch('{defaultApiEndPoint}/sendAndAuthOTP', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: this.userId }),
+          body: JSON.stringify({ userId: this.userId, action: 'send' }),
         });
         if (response.ok) {
           alert('One-time password sent to your in-game chat!');
@@ -40,10 +40,10 @@ export default {
     },
     async verifyOtp() {
       try {
-        const response = await fetch('/api/verify-otp', {
+        const response = await fetch('{defaultApiEndPoint}/sendAndAuthOTP', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId: this.userId, otp: this.otp }),
+          body: JSON.stringify({ userId: this.userId, otp: this.otp, action: 'auth' }),
         });
         if (response.ok) {
           this.$emit('authenticated', this.userId); // 認証成功時に親コンポーネントに通知

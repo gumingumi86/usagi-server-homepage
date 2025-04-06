@@ -63,12 +63,13 @@ export default {
     },
     async purchaseItem(item) {
       try {
-        const response = await fetch('/api/purchase', {
+        const response = await fetch('{defaultApiEndPoint}/usagiServerPurchase', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             userId: this.userId,
             itemId: item.id,
+            itemPrice: 0,
             quantity: item.quantity,
           }),
         });
