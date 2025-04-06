@@ -3,14 +3,12 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import HomePage from './Homepage.vue';
 import About from './About.vue';
-import Map from './Map.vue';
-import Dashboard from './Dashboard.vue';
+import ShopContainer from './ShopContainer.vue';
 
 const routes = [
   { path: '/', component: HomePage },
   { path: '/about', component: About },
-  { path: '/map', component: Map },
-  { path: '/dashboard', component: Dashboard }
+  { path: '/shop', component: ShopContainer }
 ];
 
 const router = createRouter({
