@@ -10,8 +10,8 @@
       <h3>Filter by Category:</h3>
       <div class="filter-group">
         <button
-          v-for="category in uniqueCategories"
-          :key="category"
+          v-for="(category, index) in uniqueCategories"
+          :key="`category-${index}`"
           @click="applyFilter('category', category)"
           :class="{ active: activeFilters.category === category || activeFilters.category === null }"
         >
@@ -22,8 +22,8 @@
       <h3>Filter by Mod:</h3>
       <div class="filter-group">
         <button
-          v-for="mod in uniqueMods"
-          :key="mod"
+          v-for="(mod, index) in uniqueMods"
+          :key="`mod-${index}`"
           @click="applyFilter('mod', mod)"
           :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }"
         >
@@ -38,7 +38,7 @@
     <div class="shop-grid">
       <div v-for="item in filteredItems" :key="item.id" class="shop-item">
         <!-- アイテム画像 -->
-        <img :src="`/shop_resources/${item.image}`" :alt="item.en" class="item-image" />
+        <img :src="`https://www.usagi-server.com/shop_resources/${item.image}`" :alt="item.en" class="item-image" />
         <!-- アイテム情報 -->
         <div class="item-info">
           <h3 class="item-name">{{ item.en }}</h3>
@@ -101,7 +101,7 @@ export default {
     },
     async fetchItems() {
       try {
-        const response = await fetch('/shop_resources/items.json');
+        const response = await fetch('/items.json');
         this.items = await response.json();
         // 各アイテムに初期値として quantity を追加
         this.items.forEach((item) => {
@@ -123,7 +123,7 @@ export default {
     },
     async purchaseItem(item) {
       try {
-        const response = await fetch('{defaultApiEndPoint}/usagiServerPurchase', {
+        const response = await fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/usagiServerPurchase', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

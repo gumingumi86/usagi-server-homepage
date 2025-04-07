@@ -1,6 +1,6 @@
 <template>
   <div class="auth-dialog">
-    <button class="close-button" @click="closeDialog">×</button>
+    <button class="close-button" @click="closeDialog">X</button>
     <div class="auth-content">
       <!-- ID入力画面 -->
       <div v-if="!isAuthenticated">
@@ -43,7 +43,7 @@ export default {
   methods: {
     async requestOneTimePassword() {
       try {
-        const response = await fetch('{defaultApiEndPoint}/sendAndAuthOTP', {
+        const response = await fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/sendAndAuthOTP', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: this.userId, action: 'send' }),

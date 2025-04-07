@@ -51,7 +51,7 @@
 
     <div class="video-container">
       <video autoplay loop muted playsinline>
-        <source src="/distantHorizon.mp4" type="video/mp4" />
+        <source src="https://www.usagi-server.com/distantHorizon.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -226,7 +226,7 @@ export default {
   mounted() {
     // スクロールイベントを監視
     window.addEventListener('scroll', this.handleScroll);
-    fetch('{defaultApiEndPoint}/makeImageList')
+    fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/makeImageList')
     .then((response) => response.json())
     .then((data) => {
       this.images = data;
