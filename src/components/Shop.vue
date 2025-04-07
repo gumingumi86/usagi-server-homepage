@@ -2,12 +2,43 @@
   <div class="shop-container">
     <h2 class="shop-title">Shop(In preparation)</h2>
     <router-link to="/" class="text-cyan-400 hover:underline">
-        Back to Home
+      Back to Home
     </router-link>
+
+    <!-- フィルタボタン -->
+    <div class="filter-buttons">
+      <h3>Filter by Category:</h3>
+      <div class="filter-group">
+        <button
+          v-for="category in uniqueCategories"
+          :key="category"
+          @click="applyFilter('category', category)"
+          :class="{ active: activeFilters.category === category || activeFilters.category === null }"
+        >
+          {{ category }}
+        </button>
+      </div>
+
+      <h3>Filter by Mod:</h3>
+      <div class="filter-group">
+        <button
+          v-for="mod in uniqueMods"
+          :key="mod"
+          @click="applyFilter('mod', mod)"
+          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }"
+        >
+          {{ mod }}
+        </button>
+      </div>
+
+      <!-- リセットボタン -->
+      <button @click="resetFilters" class="reset-button">Clear</button>
+    </div>
+
     <div class="shop-grid">
-      <div v-for="item in items" :key="item.id" class="shop-item">
+      <div v-for="item in filteredItems" :key="item.id" class="shop-item">
         <!-- アイテム画像 -->
-        <img :src="`/shop_resources${item.image}`" :alt="item.en" class="item-image" />
+        <img :src="`/shop_resources/${item.image}`" :alt="item.en" class="item-image" />
         <!-- アイテム情報 -->
         <div class="item-info">
           <h3 class="item-name">{{ item.en }}</h3>
@@ -33,12 +64,41 @@ export default {
   data() {
     return {
       items: [], // 静的なアイテムリストを格納
+      activeFilters: {
+        category: null,
+        mod: null,
+      },
     };
+  },
+  computed: {
+    uniqueCategories() {
+      return [...new Set(this.items.map(item => item.category))];
+    },
+    uniqueMods() {
+      return [...new Set(this.items.map(item => item.mod))];
+    },
+    filteredItems() {
+      return this.items.filter(item => {
+        const categoryMatch = this.activeFilters.category
+          ? item.category === this.activeFilters.category
+          : true;
+        const modMatch = this.activeFilters.mod
+          ? item.mod === this.activeFilters.mod
+          : true;
+        return categoryMatch && modMatch;
+      });
+    },
   },
   mounted() {
     this.fetchItems();
   },
   methods: {
+    applyFilter(type, value) {
+      this.activeFilters[type] = this.activeFilters[type] === value ? null : value;
+    },
+    resetFilters() {
+      this.activeFilters = { category: null, mod: null };
+    },
     async fetchItems() {
       try {
         const response = await fetch('/shop_resources/items.json');
@@ -87,6 +147,55 @@ export default {
 </script>
 
 <style scoped>
+.filter-buttons {
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 200px; /* Default height for expanded state */
+  opacity: 1;
+}
+
+.filter-group button {
+  margin-right: 10px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-group button.active {
+  background-color: #00bcd4;
+  color: white;
+  border-color: #00bcd4;
+}
+
+.filter-group button:hover {
+  background-color: #e0f7fa;
+}
+
+.filter-group :not(button.active) {
+  opacity: 0.5;
+}
+
+.reset-button {
+  margin-top: 10px;
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #e0f7fa;
+}
+
 .shop-container {
   padding: 10px;
   max-width: 800px;
