@@ -123,7 +123,7 @@ export default {
     },
     async purchaseItem(item) {
       try {
-        const response = await fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/usagiServerPurchase', {
+        const response = await fetch(`${import.meta.env.VITE_API_ENDPOINT}/usagiServerPurchase`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

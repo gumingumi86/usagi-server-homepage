@@ -43,7 +43,7 @@ export default {
   methods: {
     async requestOneTimePassword() {
       try {
-        const response = await fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/sendAndAuthOTP', {
+        const response = await fetch(`${import.meta.env.VITE_API_ENDPOINT}/sendAndAuthOTP`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: this.userId, action: 'send' }),
@@ -60,7 +60,7 @@ export default {
     },
     async verifyOtp() {
       try {
-        const response = await fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/sendAndAuthOTP', {
+        const response = await fetch(`${import.meta.env.VITE_API_ENDPOINT}/sendAndAuthOTP`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: this.userId, otp: this.otp, action: 'auth' }),

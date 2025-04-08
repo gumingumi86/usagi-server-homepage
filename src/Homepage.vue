@@ -226,7 +226,7 @@ export default {
   mounted() {
     // スクロールイベントを監視
     window.addEventListener('scroll', this.handleScroll);
-    fetch('https://8be3ultwqk.execute-api.ap-northeast-1.amazonaws.com/default/makeImageList')
+    fetch(`${import.meta.env.VITE_API_ENDPOINT}/makeImageList`)
     .then((response) => response.json())
     .then((data) => {
       this.images = data;
