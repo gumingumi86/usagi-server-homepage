@@ -35,11 +35,11 @@ export default {
       }
     },
     // 認証成功時の処理
-    handleAuthentication(userId, credits) {
+    handleAuthentication(response) {
       this.isAuthenticated = true;
-      this.userId = userId;
+      this.userId = response.userId;
+      this.credits = response.credits;
       this.showAuthDialog = false; // 認証ダイアログを閉じる
-      this.credits = credits;
     },
     // 認証ダイアログを閉じる
     closeAuthDialog() {

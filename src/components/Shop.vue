@@ -7,31 +7,24 @@
 
     <div class="auth-status">
       <button v-if="!userId" @click="triggerAuth" class="auth-button">Authenticate</button>
-      <div v-else class="credits-display">Your Credits: {{ credits }}</div>
+      <div v-else class="credits-display">User: {{ userId }} Credits: {{ credits }}</div>
     </div>
 
     <!-- フィルタボタン -->
     <div class="filter-buttons">
       <h3>Filter by Category:</h3>
       <div class="filter-group">
-        <button
-          v-for="(category, index) in uniqueCategories"
-          :key="`category-${index}`"
+        <button v-for="(category, index) in uniqueCategories" :key="`category-${index}`"
           @click="applyFilter('category', category)"
-          :class="{ active: activeFilters.category === category || activeFilters.category === null }"
-        >
+          :class="{ active: activeFilters.category === category || activeFilters.category === null }">
           {{ category }}
         </button>
       </div>
 
       <h3>Filter by Mod:</h3>
       <div class="filter-group">
-        <button
-          v-for="(mod, index) in uniqueMods"
-          :key="`mod-${index}`"
-          @click="applyFilter('mod', mod)"
-          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }"
-        >
+        <button v-for="(mod, index) in uniqueMods" :key="`mod-${index}`" @click="applyFilter('mod', mod)"
+          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }">
           {{ mod }}
         </button>
       </div>
@@ -198,7 +191,8 @@ export default {
 .filter-group {
   overflow: hidden;
   transition: max-height 0.3s ease, opacity 0.3s ease;
-  max-height: 200px; /* Default height for expanded state */
+  max-height: 200px;
+  /* Default height for expanded state */
   opacity: 1;
 }
 
