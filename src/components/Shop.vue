@@ -1,6 +1,6 @@
 <template>
   <div class="shop-container">
-    <h2 class="shop-title">Shop(In preparation)</h2>
+    <h2 class="shop-title">Shop</h2>
     <router-link to="/" class="text-cyan-400 hover:underline">
       Back to Home
     </router-link>
