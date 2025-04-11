@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Shopコンポーネントを常に表示 -->
-    <Shop :userId="userId" @purchaseAttempt="handlePurchaseAttempt" />
+    <Shop :userId="userId" :credits="credits" @purchaseAttempt="handlePurchaseAttempt" />
 
     <!-- 認証ダイアログ -->
     <div v-if="showAuthDialog" class="auth-dialog">
@@ -24,6 +24,7 @@ export default {
       isAuthenticated: false, // 認証状態
       userId: '', // 認証されたユーザーID
       showAuthDialog: false, // 認証ダイアログの表示状態
+      credits: 0, // ユーザーのクレジット
     };
   },
   methods: {
@@ -38,6 +39,7 @@ export default {
       this.isAuthenticated = true;
       this.userId = userId;
       this.showAuthDialog = false; // 認証ダイアログを閉じる
+      this.credits = credits;
     },
     // 認証ダイアログを閉じる
     closeAuthDialog() {

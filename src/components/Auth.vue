@@ -49,7 +49,6 @@ export default {
           body: JSON.stringify({ userId: this.userId, action: 'send' }),
         });
         if (response.ok) {
-          alert('One-time password sent to your in-game chat!');
           this.isAuthenticated = true;
         } else {
           alert('Failed to send OTP. Please check your ID.');
@@ -66,7 +65,8 @@ export default {
           body: JSON.stringify({ userId: this.userId, otp: this.otp, action: 'auth' }),
         });
         if (response.ok) {
-          this.$emit('authenticated', this.userId); // 認証成功時に親コンポーネントに通知
+          const responseBody = await response.json();
+          this.$emit('authenticated', { userId: this.userId, credits: responseBody.credits }); // 認証成功時に親コンポーネントに通知
         } else {
           alert('Invalid OTP. Please try again.');
         }

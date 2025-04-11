@@ -5,6 +5,8 @@
       Back to Home
     </router-link>
 
+    <h2>Your Credits: {{ credits }}</h2>
+
     <!-- フィルタボタン -->
     <div class="filter-buttons">
       <h3>Filter by Category:</h3>
@@ -59,6 +61,10 @@ export default {
     userId: {
       type: String,
       required: false, // 認証されていない場合は空
+    },
+    credits: {
+      type: Number,
+      required: true,
     },
   },
   data() {
@@ -134,7 +140,6 @@ export default {
           }),
         });
         if (response.ok) {
-          alert('Purchase successful! Item will be delivered in-game.');
         } else {
           alert('Purchase failed. Please check your credits.');
         }
