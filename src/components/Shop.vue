@@ -5,7 +5,10 @@
       Back to Home
     </router-link>
 
-    <h2>Your Credits: {{ credits }}</h2>
+    <div class="auth-status">
+      <button v-if="!userId" @click="triggerAuth" class="auth-button">Authenticate</button>
+      <div v-else class="credits-display">Your Credits: {{ credits }}</div>
+    </div>
 
     <!-- フィルタボタン -->
     <div class="filter-buttons">
@@ -61,10 +64,18 @@ export default {
     userId: {
       type: String,
       required: false, // 認証されていない場合は空
+      default: null,
     },
     credits: {
       type: Number,
-      required: true,
+      required: false,
+      defalst: 0
+    },
+  },
+  watch: {
+    credits(newCredits) {
+      console.log('Credits updated:', newCredits);
+      // 必要に応じて追加の処理をここに記述
     },
   },
   data() {
@@ -99,6 +110,10 @@ export default {
     this.fetchItems();
   },
   methods: {
+    triggerAuth() {
+      // 認証ボタンが押されたときに親コンポーネントにイベントを発火
+      this.$emit('triggerAuth');
+    },
     applyFilter(type, value) {
       this.activeFilters[type] = this.activeFilters[type] === value ? null : value;
     },
@@ -152,6 +167,30 @@ export default {
 </script>
 
 <style scoped>
+.auth-status {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.auth-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
+.credits-display {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
 .filter-buttons {
   margin-bottom: 20px;
 }

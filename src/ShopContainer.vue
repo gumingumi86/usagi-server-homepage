@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Shopコンポーネントを常に表示 -->
-    <Shop :userId="userId" :credits="credits" @purchaseAttempt="handlePurchaseAttempt" />
+    <Shop :userId="userId" :credits="credits" @purchaseAttempt="openAuthDialog" @triggerAuth="openAuthDialog"/>
 
     <!-- 認証ダイアログ -->
     <div v-if="showAuthDialog" class="auth-dialog">
@@ -29,13 +29,13 @@ export default {
   },
   methods: {
     // 購入時に認証が必要な場合の処理
-    handlePurchaseAttempt() {
+    openAuthDialog() {
       if (!this.isAuthenticated) {
         this.showAuthDialog = true; // 認証ダイアログを表示
       }
     },
     // 認証成功時の処理
-    handleAuthentication(userId) {
+    handleAuthentication(userId, credits) {
       this.isAuthenticated = true;
       this.userId = userId;
       this.showAuthDialog = false; // 認証ダイアログを閉じる
