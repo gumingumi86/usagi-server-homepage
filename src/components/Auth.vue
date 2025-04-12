@@ -1,6 +1,6 @@
 <template>
   <div class="auth-dialog">
-    <button class="close-button" @click="closeDialog">X</button>
+    <button class="close-button" @click="closeDialog">x</button>
     <div class="auth-content">
       <!-- ID入力画面 -->
       <div v-if="!isAuthenticated">

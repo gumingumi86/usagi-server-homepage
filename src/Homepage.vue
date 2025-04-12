@@ -101,7 +101,11 @@
 
 body {
   background: white;
-  font-family: monospace;
+  font-family: 'PixelMplus', sans-serif;
+}
+
+h2 {
+  font-family: 'PixelMplus12-Bold', sans-serif;
 }
 
 .video-container {
