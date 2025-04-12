@@ -7,7 +7,11 @@
     "filterByCategory": "Filter by Category:",
     "filterByMod": "Filter by Mod:",
     "clear": "Clear",
-     "searchPlaceholder": "🔍"
+    "searchPlaceholder": "🔍",
+    "sortNone": "",
+    "sortBy": "Sort by:",
+    "sortByName": "Name",
+    "sortByPrice": "Price"
   },
   "auth": {
     "enterIdTitle": "Enter your ID",

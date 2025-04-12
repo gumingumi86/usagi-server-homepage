@@ -7,7 +7,11 @@
     "filterByCategory": "カテゴリで絞り込む:",
     "filterByMod": "Modで絞り込む:",
     "clear": "クリア",
-    "searchPlaceholder": "🔍"
+    "searchPlaceholder": "🔍",
+    "sortBy": "並び替え:",
+    "sortNone": "",
+    "sortByName": "名前順",
+    "sortByPrice": "金額順"
   },
   "auth": {
     "enterIdTitle": "IDを入力してください",

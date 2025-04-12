@@ -41,6 +41,16 @@
       </button>
     </div>
 
+    <!-- 並び替えオプション -->
+    <div class="sort-options">
+      <label for="sort">{{ $t('shop.sortBy') }}</label>
+      <select id="sort" v-model="sortOption" class="sort-select">
+        <option value="">{{ $t('shop.sortNone') }}</option>
+        <option value="name">{{ $t('shop.sortByName') }}</option>
+        <option value="price">{{ $t('shop.sortByPrice') }}</option>
+      </select>
+    </div>
+
     <div class="shop-grid">
       <div v-for="item in filteredItems" :key="item.id" class="shop-item">
         <!-- アイテム画像 -->
@@ -100,6 +110,7 @@ export default {
         mod: null,
       },
       currentLocale: this.locale,
+      sortOption: '', // 並び替え基準（デフォルトはソートなし）
     };
   },
   computed: {
@@ -120,7 +131,7 @@ export default {
       return [...new Set(this.items.map(item => item.mod))];
     },
     filteredItems() {
-      return this.items.filter((item) => {
+      const filtered = this.items.filter((item) => {
         const name = this.getItemName(item);
         const matchesSearch = name
           .toLowerCase()
@@ -133,6 +144,19 @@ export default {
           : true;
         return matchesSearch && categoryMatch && modMatch;
       });
+
+      // 並び替えロジック
+      if (this.sortOption === 'name') {
+        return filtered.sort((a, b) => {
+          const nameA = this.getItemName(a).toLowerCase();
+          const nameB = this.getItemName(b).toLowerCase();
+          return nameA.localeCompare(nameB);
+        });
+      } else if (this.sortOption === 'price') {
+        return filtered.sort((a, b) => a.price - b.price);
+      }
+
+      return filtered;
     },
   },
   mounted() {
@@ -288,6 +312,18 @@ export default {
 
 .reset-button:hover {
   background-color: #e0f7fa;
+}
+
+.sort-options {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sort-select {
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .shop-container {
