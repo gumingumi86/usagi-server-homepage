@@ -106,7 +106,11 @@ export default {
     // 現在の言語に応じたアイテム名を取得
     getItemName() {
       return (item) => {
-        return this.locale === 'ja' ? item.jp : item.en;
+        console.log('item.jp:', item.jp);
+        if (this.locale === 'ja') {
+          return item.jp || item.en;
+        }
+        return item.en;
       };
     },
     uniqueCategories() {
@@ -211,6 +215,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .auth-status {
   margin-bottom: 20px;
   text-align: center;
