@@ -21,7 +21,7 @@
         <router-link to="/shop" class="px-2 hover:bg-gray-900 transition duration-300">Shop</router-link>
         <button
           class="ml-4 px-4 py-2 bg-blue-500 text-white rounded border-2 border-transparent hover:border-white transition duration-300 cursor-pointer"
-          onclick="location.href='https://www.usagi-server.com/Usagi Launcher-setup-2.2.1.exe'"
+          onclick="location.href='https://github.com/gumingumi86/UsagiLauncher/releases/download/Latest/Usagi.Launcher-setup-2.2.1.exe'"
         >
           Download
         </button>
