@@ -1,6 +1,5 @@
 <template>
   <div class="shop-container">
-    <LanguageDropdown />
     <h2 class="shop-title">{{ $t('shop.title') }}</h2>
     <router-link to="/" class="text-cyan-400 hover:underline">
       {{ $t('shop.backToHome') }}
@@ -48,10 +47,10 @@
     <div class="shop-grid">
       <div v-for="item in filteredItems" :key="item.id" class="shop-item">
         <!-- アイテム画像 -->
-        <img :src="`https://www.usagi-server.com/shop_resources/${item.image}`" :alt="item.en" class="item-image" />
+        <img :src="`https://www.usagi-server.com/shop_resources/${item.image}`" :alt="getItemName(item)" class="item-image" />
         <!-- アイテム情報 -->
         <div class="item-info">
-          <h3 class="item-name">{{ item.en }}</h3>
+          <h3 class="item-name">{{ getItemName(item) }}</h3>
           <p class="item-price">{{ item.price || 'N/A' }} credits</p>
           <div class="item-actions">
             <input type="number" v-model.number="item.quantity" min="1" class="item-quantity" />
@@ -78,11 +77,17 @@ export default {
       required: false,
       default: 0,
     },
+    locale: {
+      type: String,
+      required: true,
+    },
   },
   watch: {
     credits(newCredits) {
       console.log('Credits updated:', newCredits);
-      // 必要に応じて追加の処理をここに記述
+    },
+    locale(newLocale) {
+      this.currentLocale = newLocale;
     },
   },
   components: {
@@ -95,6 +100,7 @@ export default {
         category: null,
         mod: null,
       },
+      currentLocale: this.locale,
     };
   },
   computed: {
@@ -175,6 +181,9 @@ export default {
       } catch (error) {
         console.error('Error purchasing item:', error);
       }
+    },
+    getItemName(item) {
+      return this.currentLocale === 'ja' ? item.jp : item.en;
     },
   },
 };

@@ -1,15 +1,15 @@
 <template>
   <div class="language-dropdown">
     <button class="dropdown-button" @click="toggleDropdown">
-      {{ currentLanguage.toUpperCase() }}
+      {{ locale.toUpperCase() }}
       <span class="arrow" :class="{ open: isDropdownOpen }">▼</span>
     </button>
     <ul v-if="isDropdownOpen" class="dropdown-menu">
       <li
         v-for="lang in languages"
         :key="lang"
-        @click="setLanguage(lang)"
-        :class="{ active: currentLanguage === lang }"
+        @click="changeLanguage(lang)"
+        :class="{ active: locale === lang }"
       >
         {{ lang.toUpperCase() }}
       </li>
@@ -19,16 +19,20 @@
 
 <script>
 import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 export default {
-  setup() {
-    const { locale } = useI18n();
+  props: {
+    locale: {
+      type: String,
+      required: true,
+    },
+  },
+  setup(props, { emit }) {
     const isDropdownOpen = ref(false);
     const languages = ['en', 'ja'];
 
-    const setLanguage = (lang) => {
-      locale.value = lang;
+    const changeLanguage = (lang) => {
+      emit('update-locale', lang); // 親コンポーネントにイベントを発火
       isDropdownOpen.value = false; // ドロップダウンを閉じる
     };
 
@@ -37,10 +41,9 @@ export default {
     };
 
     return {
-      setLanguage,
+      changeLanguage,
       toggleDropdown,
       isDropdownOpen,
-      currentLanguage: locale,
       languages,
     };
   },

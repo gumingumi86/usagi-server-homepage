@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Shopコンポーネントを常に表示 -->
-    <Shop :userId="userId" :credits="credits" @updateCredits="updateCredits" @purchaseAttempt="openAuthDialog"
+    <Shop :userId="userId" :credits="credits" :locale="locale" @updateCredits="updateCredits" @purchaseAttempt="openAuthDialog"
       @triggerAuth="openAuthDialog" />
 
     <!-- 認証ダイアログ -->
@@ -19,6 +19,12 @@ export default {
   components: {
     Auth,
     Shop,
+  },
+  props: {
+    locale: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
