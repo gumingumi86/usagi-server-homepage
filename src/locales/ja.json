@@ -7,5 +7,15 @@
     "filterByCategory": "カテゴリで絞り込む:",
     "filterByMod": "Modで絞り込む:",
     "clear": "クリア"
+  },
+  "auth": {
+    "enterIdTitle": "IDを入力してください",
+    "enterIdDescription": "入力されたユーザー宛にゲーム内チャットでワンタイムパスワードを送信します。",
+    "enterIdPlaceholder": "IDを入力してください",
+    "submitButton": "送信",
+    "enterOtpTitle": "OTPを入力してください",
+    "enterOtpDescription": "ワンタイムパスワードがゲーム内チャットに送信されました。以下に入力してください。",
+    "enterOtpPlaceholder": "OTPを入力してください",
+    "verifyButton": "確認"
   }
 }

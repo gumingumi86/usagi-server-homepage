@@ -4,28 +4,30 @@
     <div class="auth-content">
       <!-- ID入力画面 -->
       <div v-if="!isAuthenticated">
-        <h2 class="auth-title">Enter your ID</h2>
-        <p class="auth-description">Please enter your user ID to receive a one-time password.</p>
+        <h2 class="auth-title">{{ $t('auth.enterIdTitle') }}</h2>
+        <p class="auth-description">{{ $t('auth.enterIdDescription') }}</p>
         <input
           v-model="userId"
-          placeholder="Enter your ID"
+          :placeholder="$t('auth.enterIdPlaceholder')"
           class="auth-input"
         />
-        <button @click="requestOneTimePassword" class="auth-button">Submit</button>
+        <button @click="requestOneTimePassword" class="auth-button">
+          {{ $t('auth.submitButton') }}
+        </button>
       </div>
 
       <!-- OTP入力画面 -->
       <div v-else>
-        <h2 class="auth-title">Enter OTP</h2>
-        <p class="auth-description">
-          A one-time password has been sent to your in-game chat. Please enter it below.
-        </p>
+        <h2 class="auth-title">{{ $t('auth.enterOtpTitle') }}</h2>
+        <p class="auth-description">{{ $t('auth.enterOtpDescription') }}</p>
         <input
           v-model="otp"
-          placeholder="Enter OTP"
+          :placeholder="$t('auth.enterOtpPlaceholder')"
           class="auth-input"
         />
-        <button @click="verifyOtp" class="auth-button">Verify</button>
+        <button @click="verifyOtp" class="auth-button">
+          {{ $t('auth.verifyButton') }}
+        </button>
       </div>
     </div>
   </div>
