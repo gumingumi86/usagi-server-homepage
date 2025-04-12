@@ -101,7 +101,7 @@
 
 body {
   background: white;
-  font-family: 'Minecraft Regular', monospace;
+  font-family: monospace;
 }
 
 .video-container {

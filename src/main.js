@@ -7,9 +7,9 @@ import About from './About.vue';
 import ShopContainer from './ShopContainer.vue';
 
 const routes = [
-  { path: '/', component: Homepage },
-  { path: '/about', component: About },
-  { path: '/shop', component: ShopContainer }
+  { path: '/', name: 'Homepage', component: Homepage },
+  { path: '/about', name: 'About', component: About },
+  { path: '/shop', name: 'Shop', component: ShopContainer }
 ];
 
 const router = createRouter({

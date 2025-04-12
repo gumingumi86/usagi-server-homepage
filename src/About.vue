@@ -80,7 +80,7 @@ export default {};
 }
 
 h1, h2, footer {
-  font-family: 'Minecraft Regular', 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 section {
