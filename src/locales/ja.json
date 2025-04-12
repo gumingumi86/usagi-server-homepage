@@ -6,7 +6,8 @@
     "userCredits": "ユーザー: {userId} クレジット: {credits}",
     "filterByCategory": "カテゴリで絞り込む:",
     "filterByMod": "Modで絞り込む:",
-    "clear": "クリア"
+    "clear": "クリア",
+    "searchPlaceholder": "🔍"
   },
   "auth": {
     "enterIdTitle": "IDを入力してください",

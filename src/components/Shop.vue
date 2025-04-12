@@ -14,27 +14,24 @@
       </div>
     </div>
 
+    <div class="search-bar">
+      <input v-model="searchQuery" :placeholder="$t('shop.searchPlaceholder')" class="search-input" />
+    </div>
+
     <div class="filter-buttons">
       <h3>{{ $t('shop.filterByCategory') }}</h3>
       <div class="filter-group">
-        <button
-          v-for="(category, index) in uniqueCategories"
-          :key="`category-${index}`"
+        <button v-for="(category, index) in uniqueCategories" :key="`category-${index}`"
           @click="applyFilter('category', category)"
-          :class="{ active: activeFilters.category === category || activeFilters.category === null }"
-        >
+          :class="{ active: activeFilters.category === category || activeFilters.category === null }">
           {{ category }}
         </button>
       </div>
 
       <h3>{{ $t('shop.filterByMod') }}</h3>
       <div class="filter-group">
-        <button
-          v-for="(mod, index) in uniqueMods"
-          :key="`mod-${index}`"
-          @click="applyFilter('mod', mod)"
-          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }"
-        >
+        <button v-for="(mod, index) in uniqueMods" :key="`mod-${index}`" @click="applyFilter('mod', mod)"
+          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }">
           {{ mod }}
         </button>
       </div>
@@ -47,7 +44,8 @@
     <div class="shop-grid">
       <div v-for="item in filteredItems" :key="item.id" class="shop-item">
         <!-- アイテム画像 -->
-        <img :src="`https://www.usagi-server.com/shop_resources/${item.image}`" :alt="getItemName(item)" class="item-image" />
+        <img :src="`https://www.usagi-server.com/shop_resources/${item.image}`" :alt="getItemName(item)"
+          class="item-image" />
         <!-- アイテム情報 -->
         <div class="item-info">
           <h3 class="item-name">{{ getItemName(item) }}</h3>
@@ -95,6 +93,7 @@ export default {
   },
   data() {
     return {
+      searchQuery: '',
       items: [], // 静的なアイテムリストを格納
       activeFilters: {
         category: null,
@@ -104,6 +103,12 @@ export default {
     };
   },
   computed: {
+    // 現在の言語に応じたアイテム名を取得
+    getItemName() {
+      return (item) => {
+        return this.locale === 'ja' ? item.jp : item.en;
+      };
+    },
     uniqueCategories() {
       return [...new Set(this.items.map(item => item.category))];
     },
@@ -111,14 +116,18 @@ export default {
       return [...new Set(this.items.map(item => item.mod))];
     },
     filteredItems() {
-      return this.items.filter(item => {
+      return this.items.filter((item) => {
+        const name = this.getItemName(item);
+        const matchesSearch = name
+          .toLowerCase()
+          .includes(this.searchQuery.toLowerCase());
         const categoryMatch = this.activeFilters.category
           ? item.category === this.activeFilters.category
           : true;
         const modMatch = this.activeFilters.mod
           ? item.mod === this.activeFilters.mod
           : true;
-        return categoryMatch && modMatch;
+        return matchesSearch && categoryMatch && modMatch;
       });
     },
   },
@@ -190,6 +199,18 @@ export default {
 </script>
 
 <style scoped>
+.search-bar {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.search-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 .auth-status {
   margin-bottom: 20px;
   text-align: center;

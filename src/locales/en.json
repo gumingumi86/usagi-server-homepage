@@ -6,7 +6,8 @@
     "userCredits": "User: {userId} Credits: {credits}",
     "filterByCategory": "Filter by Category:",
     "filterByMod": "Filter by Mod:",
-    "clear": "Clear"
+    "clear": "Clear",
+     "searchPlaceholder": "🔍"
   },
   "auth": {
     "enterIdTitle": "Enter your ID",
