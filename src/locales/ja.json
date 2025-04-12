@@ -22,5 +22,31 @@
     "enterOtpDescription": "ワンタイムパスワードがゲーム内チャットに送信されました。以下に入力してください。",
     "enterOtpPlaceholder": "OTPを入力してください",
     "verifyButton": "確認"
+  },
+  "about": {
+    "title": "私たちのマインクラフトサーバーについて",
+    "subtitle": "私たちのサーバーを特別なものにするユニークな特徴をご紹介します。",
+    "terrainMod": {
+      "title": "地形MOD",
+      "description": "様々な地形生成MODの導入により、200種類を超えるバイオームが生成され、無限の探索が可能です。"
+    },
+    "itemPurchase": {
+      "title": "アイテムの購入",
+      "description": "このサイトから全アイテムを購入可能です。クレジットはログイン時間に応じて増加し、ワンタイムパスワード認証により、会員登録なしで購入できます。"
+    },
+    "clientMod": {
+      "title": "クライアントMOD",
+      "description": "音や描画を最適化するMODを導入することで、没入感のあるゲームプレイを体験できます。"
+    },
+    "yuushya": {
+      "title": "Yuushya MOD",
+      "description": "Yuushya MODとリソースパックの導入により、建築の幅が広がります。",
+      "linkText": "Yuushyaの詳細はこちら"
+    },
+    "photos": {
+      "title": "写真",
+      "description": "Camerapureを使用してゲーム内で写真を撮影できます。撮影した写真はこのサイトのトップページに掲載されます。"
+    },
+    "backToHome": "ホームへ戻る"
   }
 }

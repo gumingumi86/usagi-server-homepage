@@ -22,5 +22,31 @@
     "enterOtpDescription": "A one-time password has been sent to your in-game chat. Please enter it below.",
     "enterOtpPlaceholder": "Enter OTP",
     "verifyButton": "Verify"
+  },
+  "about": {
+    "title": "About Our Minecraft Server",
+    "subtitle": "Discover the unique features that make our server special.",
+    "terrainMod": {
+      "title": "Terrain Mods",
+      "description": "With various terrain generation mods, over 200 unique biomes are created, offering endless exploration opportunities."
+    },
+    "itemPurchase": {
+      "title": "Item Purchase",
+      "description": "You can purchase all items from this site. Credits increase based on your playtime, and with one-time password authentication, anyone can purchase items without registration."
+    },
+    "clientMod": {
+      "title": "Client Mods",
+      "description": "Experience immersive gameplay with optimized sound and visuals through client-side mods."
+    },
+    "yuushya": {
+      "title": "Yuushya Mod",
+      "description": "Expand your building possibilities with the Yuushya mod and resource pack.",
+      "linkText": "Learn more about Yuushya"
+    },
+    "photos": {
+      "title": "Photography",
+      "description": "Capture stunning in-game photos with Camerapure. Your photos can be featured on the homepage of this site."
+    },
+    "backToHome": "Back to Home"
   }
 }
