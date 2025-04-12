@@ -1,36 +1,48 @@
 <template>
   <div class="shop-container">
-    <h2 class="shop-title">Shop</h2>
+    <LanguageDropdown />
+    <h2 class="shop-title">{{ $t('shop.title') }}</h2>
     <router-link to="/" class="text-cyan-400 hover:underline">
-      Back to Home
+      {{ $t('shop.backToHome') }}
     </router-link>
 
     <div class="auth-status">
-      <button v-if="!userId" @click="triggerAuth" class="auth-button">Authenticate</button>
-      <div v-else class="credits-display">User: {{ userId }} Credits: {{ credits }}</div>
+      <button v-if="!userId" @click="triggerAuth" class="auth-button">
+        {{ $t('shop.authenticate') }}
+      </button>
+      <div v-else class="credits-display">
+        {{ $t('shop.userCredits', { userId, credits }) }}
+      </div>
     </div>
 
-    <!-- フィルタボタン -->
     <div class="filter-buttons">
-      <h3>Filter by Category:</h3>
+      <h3>{{ $t('shop.filterByCategory') }}</h3>
       <div class="filter-group">
-        <button v-for="(category, index) in uniqueCategories" :key="`category-${index}`"
+        <button
+          v-for="(category, index) in uniqueCategories"
+          :key="`category-${index}`"
           @click="applyFilter('category', category)"
-          :class="{ active: activeFilters.category === category || activeFilters.category === null }">
+          :class="{ active: activeFilters.category === category || activeFilters.category === null }"
+        >
           {{ category }}
         </button>
       </div>
 
-      <h3>Filter by Mod:</h3>
+      <h3>{{ $t('shop.filterByMod') }}</h3>
       <div class="filter-group">
-        <button v-for="(mod, index) in uniqueMods" :key="`mod-${index}`" @click="applyFilter('mod', mod)"
-          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }">
+        <button
+          v-for="(mod, index) in uniqueMods"
+          :key="`mod-${index}`"
+          @click="applyFilter('mod', mod)"
+          :class="{ active: activeFilters.mod === mod || activeFilters.mod === null }"
+        >
           {{ mod }}
         </button>
       </div>
 
-      <!-- リセットボタン -->
-      <button @click="resetFilters" class="reset-button">Clear</button>
+      <button @click="resetFilters" class="reset-button">
+        {{ $t('shop.clear') }}
+      </button>
     </div>
 
     <div class="shop-grid">
@@ -52,6 +64,8 @@
 </template>
 
 <script>
+import LanguageDropdown from './LanguageDropdown.vue';
+
 export default {
   props: {
     userId: {
@@ -62,7 +76,7 @@ export default {
     credits: {
       type: Number,
       required: false,
-      defalst: 0
+      default: 0,
     },
   },
   watch: {
@@ -70,6 +84,9 @@ export default {
       console.log('Credits updated:', newCredits);
       // 必要に応じて追加の処理をここに記述
     },
+  },
+  components: {
+    LanguageDropdown,
   },
   data() {
     return {

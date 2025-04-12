@@ -1,0 +1,11 @@
+{
+  "shop": {
+    "title": "Shop",
+    "backToHome": "Back to Home",
+    "authenticate": "Authenticate",
+    "userCredits": "User: {userId} Credits: {credits}",
+    "filterByCategory": "Filter by Category:",
+    "filterByMod": "Filter by Mod:",
+    "clear": "Clear"
+  }
+}

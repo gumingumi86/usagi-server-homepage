@@ -1,0 +1,11 @@
+{
+  "shop": {
+    "title": "Shop",
+    "backToHome": "ホームに戻る",
+    "authenticate": "認証",
+    "userCredits": "ユーザー: {userId} クレジット: {credits}",
+    "filterByCategory": "カテゴリで絞り込む:",
+    "filterByMod": "Modで絞り込む:",
+    "clear": "クリア"
+  }
+}
