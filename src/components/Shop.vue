@@ -143,11 +143,15 @@ export default {
           body: JSON.stringify({
             userId: this.userId,
             itemId: item.id,
-            itemPrice: 0,
+            itemPrice: item.price,
             quantity: item.quantity,
           }),
         });
         if (response.ok) {
+          const data = await response.json();
+          console.log('Purchase successful:', data);
+          // 親コンポーネントに updatedCredit を渡す
+          this.$emit('updateCredits', data.updatedCredit);
         } else {
           alert('Purchase failed. Please check your credits.');
         }

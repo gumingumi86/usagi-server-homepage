@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- Shopコンポーネントを常に表示 -->
-    <Shop :userId="userId" :credits="credits" @purchaseAttempt="openAuthDialog" @triggerAuth="openAuthDialog"/>
+    <Shop :userId="userId" :credits="credits" @updateCredits="updateCredits" @purchaseAttempt="openAuthDialog"
+      @triggerAuth="openAuthDialog" />
 
     <!-- 認証ダイアログ -->
     <div v-if="showAuthDialog" class="auth-dialog">
@@ -45,9 +46,11 @@ export default {
     closeAuthDialog() {
       this.showAuthDialog = false;
     },
+    updateCredits(updatedCredit) {
+      this.credits = updatedCredit; // credits を更新
+    },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
