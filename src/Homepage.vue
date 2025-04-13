@@ -62,14 +62,26 @@
         v-for="(image, index) in images"
         :key="index"
         class="gallery-item"
+        :style="{ animationDelay: `${index * 0.3}s` }"
       >
-        <img :src="image" alt="Gallery Image" class="gallery-image" />
+        <img :src="image" alt="Gallery Image" class="gallery-image slide-in" />
       </div>
     </div>
   </div>
 </template>
 
 <style>
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* モバイルメニューのスタイル */
 .mobile-menu {
   position: fixed; /* 固定位置にする */
@@ -147,6 +159,8 @@ video {
 .gallery-item {
   overflow: hidden;
   position: relative;
+  animation: slideInFromBottom 0.8s ease-out forwards;
+  opacity: 0; /* 初期状態で非表示 */
 }
 
 .gallery-image {
