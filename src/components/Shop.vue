@@ -278,6 +278,7 @@ export default {
 
 .filter-group button {
   margin-right: 10px;
+  margin-bottom: 10px;
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;

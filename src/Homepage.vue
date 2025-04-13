@@ -62,7 +62,7 @@
         v-for="(image, index) in images"
         :key="index"
         class="gallery-item"
-        :style="{ animationDelay: `${index * 0.3}s` }"
+        :style="{ animationDelay: `${index * 0.2}s` }"
       >
         <img :src="image" alt="Gallery Image" class="gallery-image slide-in" />
       </div>
